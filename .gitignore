@@ -1,1 +1,4 @@
 node_modules
+src/backend/models/cnn_model.h5
+src/backend/models/decision_tree_classifier.joblib
+src/backend/models/food_recognition_inceptionV3.h5
