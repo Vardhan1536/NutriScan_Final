@@ -32,13 +32,14 @@ export const Chat: React.FC = () => {
 
     try {
       // Send the user input to the backend
-      const response = await axios.post('http://localhost:8000/chat', {
-        user_query: input,
-      });
-
+      const response = await axios.post("http://localhost:8000/chat",
+        { prompt: input }, 
+        { headers: { "Content-Type": "application/json" } }
+      );
+      
       const assistantMessage: Message = {
         id: Date.now().toString(),
-        text: response.data.answer,  // Assuming the response from FastAPI contains the field `answer`
+        text: response.data.response,  // Assuming the response from FastAPI contains the field `answer`
         sender: 'assistant',
         timestamp: new Date(),
       };

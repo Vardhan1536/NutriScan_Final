@@ -36,7 +36,7 @@ export const Login: React.FC = () => {
         if (user_id) {
           setSuccessMessage("Login successful!");
           setErrorMessage("");
-          navigate("/medical-history"); // Redirect to medical history page
+          navigate("/"); // Redirect to medical history page
         }
       }
     } catch (error) {

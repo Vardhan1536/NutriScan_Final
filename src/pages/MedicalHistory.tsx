@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Card } from "../components/Card";
-import { FileUp, ClipboardList, Edit2, Trash, Download } from "lucide-react";
+import { FileUp, ClipboardList, Edit2, Trash, Download, Upload } from "lucide-react";
 import { MedicalSurvey } from "../components/medical/MedicalSurvey";
 import { UserProfile } from "../components/medical/UserProfile";
 import { Button } from "../components/Button";
@@ -12,7 +12,6 @@ export const MedicalHistory: React.FC = () => {
   const newReport = location.state?.newReport;
   const [mode, setMode] = useState<"choose" | "survey" | "upload">("choose");
   const [reports, setReports] = useState<any[]>([]);
-
   const [editingReportId, setEditingReportId] = useState<string | null>(null);
   const [newTitle, setNewTitle] = useState("");
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
@@ -193,6 +192,12 @@ export const MedicalHistory: React.FC = () => {
   }
 };
 
+const handleFileDrop = (event: React.DragEvent<HTMLDivElement>) => {
+  event.preventDefault();
+  const file = event.dataTransfer.files[0];
+  if (file) setUploadedFile(file);
+};
+
   
 const handleDownload = async (fileId: string, fileName: string) => {
   const token = localStorage.getItem("token");
@@ -235,41 +240,22 @@ const handleDownload = async (fileId: string, fileName: string) => {
 
   if (mode === "upload") {
     return (
-      <div className="p-6 border-2 border-dashed rounded-lg hover:border-[#646cff] transition-colors">
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            handleUpload();
-          }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6"
-        >
-          <h1 className="text-lg font-semibold mb-4 text-center">
-            Upload Health Report
-          </h1>
-
-          {/* File input */}
-          <input
-            type="file"
-            onChange={handleFileChange}
-            className="border border-gray-300 p-2 rounded w-full mb-4"
-            accept=".pdf,image/*"
-          />
-
-          {/* Error message */}
-          {error && <p className="text-red-500 text-sm text-center">{error}</p>}
-
-          {/* Submit button */}
-          <button
-            type="submit"
-            className={`p-6 border-2 border-dashed rounded-lg hover:border-[#646cff] transition-colors ${loading ? "bg-gray-400 cursor-not-allowed" : "bg-blue-500 hover:bg-blue-600"
-              } text-white w-full`}
-            disabled={loading}
+      <Card>
+          <h2 className="text-2xl font-bold mb-4">Upload Medical Report</h2>
+          <div
+            className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center cursor-pointer hover:border-[#646cff]"
+            onDragOver={(e) => e.preventDefault()}
+            onDrop={handleFileDrop}
+            onClick={() => document.getElementById("file-upload")?.click()}
           >
-            <FileUp className="h-12 w-12 mx-auto mb-4 text-[#646cff]" />
-            {loading ? "Uploading..." : "Upload"}
-          </button>
-        </form>
-      </div>
+            <Upload className="h-12 w-12 mx-auto text-gray-400" />
+            <p className="text-gray-600">Drag & Drop a file or click to upload</p>
+            <input type="file" className="hidden" id="file-upload" onChange={(e) => setUploadedFile(e.target.files?.[0] || null)} />
+          </div>
+          {uploadedFile && <p className="text-center text-gray-800 mt-2">Selected: {uploadedFile.name}</p>}
+          {error && <p className="text-red-500 text-sm text-center">{error}</p>}
+          <Button className="w-full mt-4" onClick={handleUpload} disabled={loading}>{loading ? "Uploading..." : "Upload"}</Button>
+        </Card>
     );
   }
 

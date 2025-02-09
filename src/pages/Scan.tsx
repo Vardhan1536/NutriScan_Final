@@ -25,11 +25,6 @@ export const Scan: React.FC = () => {
 
   // Load extracted data from localStorage if available
   useEffect(() => {
-    const savedData = localStorage.getItem('extractedData');
-    if (savedData) {
-      setExtractedData(JSON.parse(savedData));
-    }
-  
     // Fetch medical report from the backend (if it exists)
     const fetchMedicalReport = async () => {
       try {
@@ -102,8 +97,6 @@ export const Scan: React.FC = () => {
       });
 
       setExtractedData(response.data);
-      // Save the extracted data to localStorage
-      localStorage.setItem('extractedData', JSON.stringify(response.data));
     } catch (error) {
       console.error('Error during upload:', error);
       alert('Failed to process the image. Please try again.');

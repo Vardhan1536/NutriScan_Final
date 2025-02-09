@@ -22,6 +22,7 @@ from passlib.context import CryptContext
 from fastapi import HTTPException, status
 import gridfs
 from datetime import datetime, timedelta
+from chat import chat_bot
 
 # Initialize FastAPI app
 app = FastAPI(
@@ -277,6 +278,19 @@ async def get_medical_report(username: str = Depends(get_current_user)):
     except Exception as e:
         print(f"Error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
+
+class ChatRequest(BaseModel):
+    prompt: str
+    
+@app.post("/chat")
+async def get_chat(request : ChatRequest):
+    try:
+        """ Takes the prompt from user and gives the response just as a normal gemini model"""
+        response = chat_bot(request.prompt) #gets response.text into the response
+        return {"response": response} 
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 
     
 
