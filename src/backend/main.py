@@ -23,6 +23,8 @@ from fastapi import HTTPException, status
 import gridfs
 from datetime import datetime, timedelta
 from chat import chat_bot
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 
 # Initialize FastAPI app
 app = FastAPI(
@@ -53,6 +55,12 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.mount("/", StaticFiles(directory="dist" , html=True), name="static")
+
+@app.get("/")
+async def serve_index():
+    return FileResponse("dist/index.html")
 
 def hash_password(password: str) -> str:
     return pwd_context.hash(password)
