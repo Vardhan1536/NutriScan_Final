@@ -40,7 +40,7 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 MONGO_URI = "mongodb+srv://nutriscan:nutriscan@cluster0.fuano.mongodb.net/nutriscan?retryWrites=true&w=majority"
 client = MongoClient(MONGO_URI)
 db = client["nutriscan"]
-fs = gridfs.GridFS(db)  # GridFS instance
+fs = gridfs.GridFS(db) 
 users_collection = db.users
 files_collection = db.files
 
@@ -174,16 +174,14 @@ async def label_scan(image: UploadFile = File(...)):
         os.remove(label_image_path)
         print(JSONResponse(content={"result": result}))
 
-        # Return the result as JSON
         return JSONResponse(content={"result": result})
     except Exception as e:
         return JSONResponse(content={"error": str(e)}, status_code=500)
     
-   
-# OAuth2 scheme for token authentication
+
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
 
-# Function to get the current user from the token
+
 def get_current_user(token: str = Depends(oauth2_scheme)):
     """Extracts the username from the JWT token."""
     print(f"Received token: {token}")
@@ -199,12 +197,12 @@ def get_current_user(token: str = Depends(oauth2_scheme)):
 @app.post("/upload-medical-report")
 async def upload_medical_report(file: UploadFile = File(...), username: str= Depends(get_current_user)):
     try:
-        # Include the user_id in the file metadata
+        
         file_id = fs.put(
             file.file,
             filename=file.filename,
             content_type=file.content_type,
-            username = username  # Use username or user_id
+            username = username  
         )
         files_collection.insert_one({"_id": file_id, "filename": file.filename, "username": username,"contentType": file.content_type ,})
         return {"message": "File uploaded successfully", "file_id": str(file_id)}
@@ -235,14 +233,14 @@ async def delete_medical_report(file_id: str, username: str = Depends(get_curren
         if not file_obj:
             raise HTTPException(status_code=404, detail="File not found or unauthorized")
     
-        fs.delete(ObjectId(file_id))  # Delete from GridFS
-        files_collection.delete_one({"_id": ObjectId(file_id)})  # Delete metadata
+        fs.delete(ObjectId(file_id))  
+        files_collection.delete_one({"_id": ObjectId(file_id)}) 
     
         return {"message": "File deleted successfully"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
  
- # Fetch user-specific files
+
 @app.get("/get-user-files")
 async def get_user_files(username: str = Depends(get_current_user)):
     try:
@@ -258,7 +256,7 @@ async def get_user_files(username: str = Depends(get_current_user)):
 async def get_medical_report(username: str = Depends(get_current_user)):
     try:
         """Fetches the user's medical report."""
-        # Assuming there's only one report per user, or you can modify it to fetch all reports
+       
         file_obj = files_collection.find_one({"username": username})
         print(file_obj)
     
@@ -267,12 +265,12 @@ async def get_medical_report(username: str = Depends(get_current_user)):
         
         content_type = file_obj.get("contentType", "application/octet-stream")
     
-        # Fetch the file from GridFS
+        
         file_data = fs.get(file_obj["_id"])
         print(file_data)
         print(file_obj["contentType"])
         
-        # Return the file details (or you can send file content if needed)
+        
         return StreamingResponse(file_data, media_type=file_obj["contentType"], headers={"Content-Disposition": f"attachment; filename={file_obj['filename']}"})
         
     except Exception as e:
@@ -286,7 +284,7 @@ class ChatRequest(BaseModel):
 async def get_chat(request : ChatRequest):
     try:
         """ Takes the prompt from user and gives the response just as a normal gemini model"""
-        response = chat_bot(request.prompt) #gets response.text into the response
+        response = chat_bot(request.prompt) 
         return {"response": response} 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
