@@ -28,7 +28,7 @@ dnspython==2.7.0
 exceptiongroup==1.2.2
 executing==2.2.0
 faiss-cpu==1.10.0
-fastapi
+fastapi==0.115.7
 filelock==3.17.0
 fire==0.7.0
 Flask==3.1.0
@@ -105,10 +105,10 @@ pandas==2.2.3
 parso==0.8.4
 pillow==11.1.0
 pip==25.0
-protobuf>=3.20.2,<5.0.0
 platformdirs==4.3.6
 prompt_toolkit==3.0.50
 proto-plus==1.25.0
+protobuf==3.20.2
 psutil==6.1.1
 pure_eval==0.2.3
 pyarrow==19.0.0
@@ -127,6 +127,7 @@ PySocks==1.7.1
 python-dateutil==2.9.0.post0
 python-docx==1.1.2
 pytz==2024.2
+pywin32==308
 PyYAML==6.0.2
 pyzmq==26.2.0
 RapidFuzz==3.12.1
@@ -161,6 +162,7 @@ tensorboard==2.15.2
 tensorboard-data-server==0.7.2
 tensorflow==2.15.0
 tensorflow-estimator==2.15.0
+tensorflow-intel==2.15.0
 tensorflow-io-gcs-filesystem==0.31.0
 termcolor==2.5.0
 threadpoolctl==3.5.0
@@ -168,9 +170,7 @@ tifffile==2025.1.10
 tokenizers==0.21.0
 toml==0.10.2
 tomli==2.2.1
-torch==2.1.0
-torchvision==0.16.0
-torchaudio==2.1.0
+torch==2.5.1
 tornado==6.4.2
 tqdm==4.67.1
 traitlets==5.14.3
@@ -181,7 +181,7 @@ typing_extensions==4.12.2
 tzdata==2025.1
 uritemplate==4.1.1
 urllib3==2.3.0
-uvicorn
+uvicorn==0.34.0
 watchdog==6.0.0
 wcwidth==0.2.13
 websocket-client==1.8.0
