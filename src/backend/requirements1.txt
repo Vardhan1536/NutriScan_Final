@@ -108,7 +108,7 @@ pip==25.0
 platformdirs==4.3.6
 prompt_toolkit==3.0.50
 proto-plus==1.25.0
-protobuf==3.20.1
+protobuf==3.20.3
 psutil==6.1.1
 pure_eval==0.2.3
 pyarrow==19.0.0
