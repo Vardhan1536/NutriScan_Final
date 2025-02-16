@@ -170,9 +170,10 @@ tifffile==2025.1.10
 tokenizers==0.21.0
 toml==0.10.2
 tomli==2.2.1
-torch @ https://download.pytorch.org/whl/cu118/torch-2.1.0%2Bcu118-cp310-cp310-win_amd64.whl
-torchvision @ https://download.pytorch.org/whl/cu118/torchvision-0.16.0%2Bcu118-cp310-cp310-win_amd64.whl
-torchaudio @ https://download.pytorch.org/whl/cu118/torchaudio-2.1.0%2Bcu118-cp310-cp310-win_amd64.whl
+torch==2.1.0
+torchvision==0.16.0 
+--extra-index-url https://download.pytorch.org/whl/cu118
+torchaudio==2.1.0
 tornado==6.4.2
 tqdm==4.67.1
 traitlets==5.14.3
