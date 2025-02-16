@@ -1,4 +1,6 @@
 numpy==1.26.4
+uuid
+json
 pandas==2.2.3
 scikit-learn==1.6.1
 opencv-python-headless==4.11.0.86
@@ -9,6 +11,11 @@ torchaudio==2.1.0
 transformers==4.30.2
 pillow==11.1.0
 fastapi
+bson
+opencv-python
+huggingface-hub==0.16.4
+joblib==1.4.2
+keras==2.15.0
 uvicorn
 python-multipart
 python-jose[cryptography]
@@ -16,10 +23,11 @@ passlib[bcrypt]
 sqlalchemy==2.0.37
 psycopg2-binary
 pydantic==2.10.5
+paddleocr==2.9.1
+paddlepaddle==2.6.2
 python-dotenv
 requests==2.32.3
 beautifulsoup4==4.12.3
-aiofiles
 jinja2==3.1.5
 python-dateutil==2.9.0.post0
 tqdm==4.67.1
@@ -27,5 +35,9 @@ matplotlib==3.10.0
 scipy==1.15.1
 joblib==1.4.2
 setuptools==57.4.0
+sentence-transformers==2.2.2
+transformers==4.30.2
 wheel==0.45.1
-gunicorn
+zxing
+faiss
+google-generativeai
