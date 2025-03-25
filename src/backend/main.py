@@ -22,6 +22,7 @@ from passlib.context import CryptContext
 from fastapi import HTTPException, status
 import gridfs
 from datetime import datetime, timedelta
+from chatbot import chatbot_conversation,model1
 
 # Initialize FastAPI app
 app = FastAPI(
@@ -141,10 +142,12 @@ async def food_scan_api(image: UploadFile = File(...), medical: Optional[UploadF
 
         temp_medical_path = None
         if medical :  # Check if medical file is provided
+            print("Medical file is available")
             temp_medical_path = f"temp_{medical.filename}"
             with open(temp_medical_path, "wb") as buffer:
                 shutil.copyfileobj(medical.file, buffer)
 
+        print("Medical file not found to the food-scan api")
         # Call the food_scan function with file paths
         result = food_scan(temp_image_path, medical=temp_medical_path)
 
@@ -278,5 +281,22 @@ async def get_medical_report(username: str = Depends(get_current_user)):
         print(f"Error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
-    
 
+class ChatRequest(BaseModel):
+    hist: list[str]
+    user_input: str
+
+def chatbot_conversation(hist: list[str], user_input: str):
+    """Function to send messages to Gemini AI."""
+    try:
+        # Start a chat session with history
+        chat = model1.start_chat(history=[{"role": "user", "parts": hist}])
+        response = chat.send_message(user_input)
+        return response.text
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/chat")
+def chat_api(request: ChatRequest):
+    """API Endpoint for chatbot conversation."""
+    return {"response": chatbot_conversation(request.hist, request.user_input)}

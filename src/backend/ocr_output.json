@@ -1,7 +1,7 @@
 [
     {
         "text": "DIABETIS SPECIALIEYCENTE",
-        "confidence": 0.8731057047843933,
+        "confidence": 0.8654664158821106,
         "bounding_box": [
             [
                 894.0,
@@ -23,29 +23,29 @@
     },
     {
         "text": "Patient Name :MS.K TANMAYI",
-        "confidence": 0.9341855645179749,
+        "confidence": 0.9221509099006653,
         "bounding_box": [
             [
-                90.0,
-                110.0
-            ],
-            [
-                360.0,
-                114.0
-            ],
-            [
-                360.0,
-                140.0
-            ],
-            [
                 89.0,
-                136.0
+                109.0
+            ],
+            [
+                360.0,
+                113.0
+            ],
+            [
+                360.0,
+                141.0
+            ],
+            [
+                88.0,
+                137.0
             ]
         ]
     },
     {
         "text": "Patient ID31966",
-        "confidence": 0.9762988686561584,
+        "confidence": 0.9743123650550842,
         "bounding_box": [
             [
                 666.0,
@@ -67,7 +67,7 @@
     },
     {
         "text": "Age/Gender:15 years/Female",
-        "confidence": 0.9480712413787842,
+        "confidence": 0.9480275511741638,
         "bounding_box": [
             [
                 88.0,
@@ -110,8 +110,8 @@
         ]
     },
     {
-        "text": "ReferralDr.R.L.V Phani Kumar",
-        "confidence": 0.9545587301254272,
+        "text": "Referral:Dr.R.L.V Phani Kumar",
+        "confidence": 0.9298167824745178,
         "bounding_box": [
             [
                 87.0,
@@ -132,8 +132,8 @@
         ]
     },
     {
-        "text": "Reporting TimeJun 06,202110:56 a.m",
-        "confidence": 0.9364967346191406,
+        "text": "Reporting Time Jun 06,202110:56 a.m",
+        "confidence": 0.9240111112594604,
         "bounding_box": [
             [
                 665.0,
@@ -199,7 +199,7 @@
     },
     {
         "text": "Test Description",
-        "confidence": 0.9732937216758728,
+        "confidence": 0.9727821350097656,
         "bounding_box": [
             [
                 74.0,
@@ -221,7 +221,7 @@
     },
     {
         "text": "Value(s)",
-        "confidence": 0.9767159223556519,
+        "confidence": 0.9746301174163818,
         "bounding_box": [
             [
                 460.0,
@@ -243,7 +243,7 @@
     },
     {
         "text": "Reference Range",
-        "confidence": 0.9740676879882812,
+        "confidence": 0.9739367961883545,
         "bounding_box": [
             [
                 604.0,
@@ -265,11 +265,11 @@
     },
     {
         "text": "Units",
-        "confidence": 0.996289849281311,
+        "confidence": 0.9968488812446594,
         "bounding_box": [
             [
                 896.0,
-                268.0
+                269.0
             ],
             [
                 955.0,
@@ -287,7 +287,7 @@
     },
     {
         "text": "BLOOD GLUCOSE RANDOM",
-        "confidence": 0.9655483365058899,
+        "confidence": 0.9666621088981628,
         "bounding_box": [
             [
                 76.0,
@@ -309,7 +309,7 @@
     },
     {
         "text": "BLOOD GLUCOSE RANDOM",
-        "confidence": 0.9634429812431335,
+        "confidence": 0.9514851570129395,
         "bounding_box": [
             [
                 72.0,
@@ -418,8 +418,8 @@
         ]
     },
     {
-        "text": "SERUM IgE (Electrochemiluminescence immunoassay)",
-        "confidence": 0.9531709551811218,
+        "text": "SERUM IgE (Electrochemiluminescence immunoassayl",
+        "confidence": 0.9540391564369202,
         "bounding_box": [
             [
                 72.0,
@@ -463,7 +463,7 @@
     },
     {
         "text": "790.2",
-        "confidence": 0.9938135147094727,
+        "confidence": 0.993760883808136,
         "bounding_box": [
             [
                 458.0,
@@ -551,7 +551,7 @@
     },
     {
         "text": "THIS REPORT IS NOTFORMEDICOLEAL PURPOSEALLMEDICALREPORTS TO BE NTERPRETED BY MEDICALPERSONAL ONLYTHE REPORT",
-        "confidence": 0.8035911917686462,
+        "confidence": 0.8047302961349487,
         "bounding_box": [
             [
                 90.0,
@@ -595,7 +595,7 @@
     },
     {
         "text": "END OF REPORT",
-        "confidence": 0.9313706755638123,
+        "confidence": 0.933131217956543,
         "bounding_box": [
             [
                 476.0,
@@ -617,7 +617,7 @@
     },
     {
         "text": "M.Suresh Kumar",
-        "confidence": 0.9460076689720154,
+        "confidence": 0.9471819996833801,
         "bounding_box": [
             [
                 877.0,
@@ -639,7 +639,7 @@
     },
     {
         "text": "Lab Technician",
-        "confidence": 0.9718455672264099,
+        "confidence": 0.9718226194381714,
         "bounding_box": [
             [
                 64.0,
@@ -661,7 +661,7 @@
     },
     {
         "text": "Lab Incharge",
-        "confidence": 0.9879162907600403,
+        "confidence": 0.9876222014427185,
         "bounding_box": [
             [
                 879.0,

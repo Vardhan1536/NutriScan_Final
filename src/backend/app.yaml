@@ -1,0 +1,15 @@
+runtime: python310  # Matches Python 3.10 from your Dockerfile
+
+entrypoint: uvicorn main:app --host=0.0.0.0 --port=8000
+
+instance_class: F2  # Change to F4 for more power
+
+automatic_scaling:
+  target_cpu_utilization: 0.65
+  min_instances: 1
+  max_instances: 5
+
+handlers:
+- url: /.*
+  script: auto
+  secure: always

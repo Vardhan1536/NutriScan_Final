@@ -123,7 +123,7 @@ def rag(file_path):
     json_data = json.dumps(metadata)
     genai.configure(api_key="AIzaSyC8f-sZzHSqMfR2EEu273C_QHRbxoxGQCw")
     gemini = genai.GenerativeModel("gemini-1.5-flash")
-    prompt = ("""i am giving you the ocr model outputs for the nutrient label backside of a food pacakge structurize that in this format Task 1 : convert the units of the nutrients in to following units
+    prompt = ("""i am giving you the ocr model outputs for the nutrient label backside of a food pacakge structurize that in this format ,if it is not a food item then donot perfrom any task mentioned and give the output as not a food item or item not recognized. else:Task 1 : convert the units of the nutrients in to following units
       Energy:
 
 Unit: Kilocalories (kcal)
@@ -353,12 +353,12 @@ def label_des(image,medical):
   data_json = json.loads(extracted_content)
   score = calculate_health_score(data_json)
   if medical!=None:
-    prompt =  (f'you are a nutrientist and a customer with his medical report {medical} came to you and gave the output of a ocr  from which you should only perform this tasks'
+    prompt =  (f'you are a nutrientist and a customer with his medical report {medical} came to you and gave the output of a ocr. if it is not food item then dont perform any tasks mentioned and give the output as not a food item.else you should only perform this tasks.'
               f'Task1 : give me the description overall the description came be understandable for a common person. give description by considering the medical report it should be like `Description obout Dosa: your description goes here` '
               f'Task2: I will give you the health score of food item based on nutrient {score} give reasons for the score just give it in 1-2 points by consisdering the medical report it should be like `Reason for score: your reason goes here`'
               f'ocr_output {ocr}')
   else:
-    prompt =  (f'you are a nutrientist and a customer came to you and gave the output of a ocr  from which you should only perform this tasks'
+    prompt =  (f'you are a nutrientist and a customer came to you and gave the output of a ocr.if it is not food item then dont perform any tasks mentioned and give the output as not a food item.else you should only perform this tasks.'
               f'Task1 : give me the description overall the description came be understandable for a common person '
               f'Task2: I will give you the health score of food item based on nutrient {score} give reasons for the score just give it in 1-2 points'
               f'ocr_output {ocr}')
@@ -414,12 +414,14 @@ def process_barcode_image(image_path,medical=None):
         if medical!=None:
             prompt = (f'see You are a nutrionist you are tasked for food item {k}'
                       f'You are also given with patient medical report{medical}'
+                      f'if it is not a food item then give the output as not a food item or give output as unable to recognize it. else you should perform the below tasks.'
                       'Task 1: give a health score for this food Item based on nutrients present in it just give in this pattern based on medical report `Score :3.5/5`'
                       'Task2:Give a description for this Food Item by consisdering the medical report'
                       'Task3 : If it is risky to eat give a warning by consisdering the medical report'
                       'Task4: Give main Nutrients present in it')
         else:
             prompt = (f'see You are a nutrionist you are tasked for food item {k}'
+                      f'if it is not a food item then give the output as not a food item or give output as unable to recognise it. else you should perform the below tasks.'
                       'Task 1: give a health score for this food Item based on nutrients present in it just give in this pattern `Score :3.5/5`'
                       'Task2:Give a description for this Food Item '
                       'Task3 : If it is risky to eat give a warning'
@@ -448,12 +450,14 @@ def food_des(image,medical):
   if medical!=None:
     prompt = (f'see You are a nutrionist you are tasked for food item {class_name} in general'
               f'You are also given with patient medical report{medical}'
+              f'if it is not a food item then give the output as not a food item or give output as unable to recognize it. else you should perform the below tasks.'
               'Task 1: give a health score for this food Item based on nutrients present in it just give in this pattern based on medical report `Score :3.5/5`'
               'Task2:Give a description for this Food Item by consisdering the medical report'
               'Task3 : If it is risky to eat give a warning by consisdering the medical report'
               'Task4: Give main Nutrients present in it')
   else:
     prompt = (f'see You are a nutrionist you are tasked for food item {class_name}'
+              f'if it is not a food item then give the output as not a food item or give output as unable to recognize it. else you should perform the below tasks.'
               'Task 1: give a health score for this food Item based on nutrients present in it just give in this pattern `Score :3.5/5`'
               'Task2:Give a description for this Food Item '
               'Task3 : If it is risky to eat give a warning'

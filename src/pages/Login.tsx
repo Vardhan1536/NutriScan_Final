@@ -4,7 +4,6 @@ import { Input } from '../components/Input';
 import { Button } from '../components/Button';
 import { Card } from '../components/Card';
 import { useAuth } from '../components/auth/AuthContext'; // Import AuthContext
-// import { InputAdornment, IconButton, VisibilityOff,Visibility } from '@mui/material';
 
 export const Login: React.FC = () => {
   const navigate = useNavigate();
@@ -59,7 +58,7 @@ export const Login: React.FC = () => {
     setIsNewUser(false);
     setSuccessMessage('');
     setAccountCreated(false);
-  };
+  };  
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#f9f9f9] px-4">
