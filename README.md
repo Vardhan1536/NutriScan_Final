@@ -3,6 +3,8 @@
 This repository has website code of NutriScan
 Demo Video Link : https://player.cloudinary.com/embed/?cloud_name=dejlliwlz&public_id=Vite_React_TS_-_Google_Chrome_2025-01-23_17-11-51_xycsrg&profile=cld-default
 
+For Github link of NutriScan APP click here : https://github.com/Vardhan1536/NutriScan_Flutter
+
 > **AI-powered food analysis system for real-time dietary guidance**
 
 ---
@@ -77,3 +79,4 @@ NutriScan enhances consumer awareness by delivering **instant, AI-driven analysi
 This project is licensed under the MIT License – see the [LICENSE](./LICENSE) file for details.
 
 ---
+
